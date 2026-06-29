@@ -1,0 +1,12 @@
+node_modules
+.next
+.git
+.gitignore
+.env*
+*.log
+*.md
+.vscode
+.idea
+Dockerfile
+.dockerignore
+LEIA-ME.txt
