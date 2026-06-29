@@ -62,8 +62,11 @@ export const config = {
   anthropicKey: process.env.ANTHROPIC_API_KEY ?? "",
 };
 
+/** Modo demonstração (vitrine): libera o acesso sem login — use só com dados fictícios. */
+export const isDemo = (process.env.DEMO_MODE ?? process.env.NEXT_PUBLIC_DEMO_MODE) === "1";
+
 /**
- * Em dev E sem SSO configurado, dispensa o login (acesso direto no localhost).
- * Em produção NODE_ENV="production" e o SSO está sempre setado, então NUNCA dispensa.
+ * Dispensa o login quando: (dev OU modo demo) E sem SSO configurado.
+ * Em produção real o SSO está setado, então NUNCA dispensa.
  */
-export const authDispensado = isDev && !config.sso.baseUrl;
+export const authDispensado = (isDev || isDemo) && !config.sso.baseUrl;

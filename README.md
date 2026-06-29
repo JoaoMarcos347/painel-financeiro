@@ -26,8 +26,15 @@ perguntar sobre os números em linguagem natural.
 
 ## 🖼️ Demonstração
 
-> _Capturas de tela / demo ao vivo em breve._
-<!-- adicione imagens em docs/ e referencie aqui; e o link da demo (Vercel) quando publicar -->
+> _Demo ao vivo e capturas de tela em breve._
+
+Há um **modo demonstração** com dados 100% fictícios (nenhum dado real):
+
+```bash
+# com o banco configurado no .env.local:
+node scripts/seed-demo.mjs     # popula dados fictícios
+DEMO_MODE=1 npm run dev         # abre sem exigir login → http://localhost:3000
+```
 
 ---
 
