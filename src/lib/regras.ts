@@ -1,9 +1,12 @@
 import { query } from "./db";
 import type { TxRow } from "./queries";
+import { isDemo } from "./config";
+import { demoPlanoContas, demoRules } from "./demo-data";
 
 export type PlanoConta = { codigo: string | null; nome: string; label: string };
 
 export async function getPlanoContas(): Promise<PlanoConta[]> {
+  if (isDemo) return demoPlanoContas;
   const data = await query<{ codigo: string | null; nome: string }>(
     `select code as codigo, name as nome from chart_of_accounts order by sort_order asc nulls last`
   );
@@ -30,6 +33,7 @@ export type RuleRow = {
 };
 
 export async function getRules(): Promise<RuleRow[]> {
+  if (isDemo) return demoRules;
   return query<RuleRow>(
     `select id,
             case match_type

@@ -1,4 +1,12 @@
 import { query } from "./db";
+import { isDemo } from "./config";
+import {
+  demoTransactions,
+  demoCompanies,
+  demoAccounts,
+  demoComentarios,
+  demoNomeGrupo,
+} from "./demo-data";
 
 export type TxRow = {
   id: string;
@@ -45,6 +53,7 @@ export function invalidateTxCache() {
 // ── de volta pro português, pra o resto do código continuar igual.        ──
 
 export async function fetchAllTransactions(): Promise<TxRow[]> {
+  if (isDemo) return demoTransactions;
   if (_txCache && Date.now() - _txCache.at < TX_TTL_MS) return _txCache.data;
   const data = await query<TxRow>(
     `select id,
@@ -70,10 +79,12 @@ export async function fetchAllTransactions(): Promise<TxRow[]> {
 }
 
 export async function getCompanies(): Promise<Company[]> {
+  if (isDemo) return demoCompanies;
   return query<Company>(`select id, name as nome, cnpj from companies`);
 }
 
 export async function getAccounts(): Promise<Account[]> {
+  if (isDemo) return demoAccounts;
   return query<Account>(
     `select id, company_id, bank as banco, type as tipo, subtype as subtipo,
             number as numero, balance::float8 as saldo
@@ -91,6 +102,7 @@ type SyncRow = {
 };
 
 export async function getUltimaSync(): Promise<SyncRow | null> {
+  if (isDemo) return null;
   const rows = await query<SyncRow>(
     `select started_at::text as inicio, finished_at::text as fim,
             transactions_count as qtd_transacoes, accounts_count as qtd_contas,
@@ -106,6 +118,7 @@ export async function getUltimaSync(): Promise<SyncRow | null> {
 export async function getComentariosPorMes(): Promise<
   Record<string, { payload: import("./insights").Comentarios; gerado_em: string }>
 > {
+  if (isDemo) return demoComentarios;
   const rows = await query<{ id: string; payload: import("./insights").Comentarios; gerado_em: string }>(
     `select id, content as payload, generated_at::text as gerado_em from insights_cache`
   );
@@ -228,6 +241,7 @@ export function despesasPorMesConta(txs: TxRow[]): Record<string, Record<string,
 
 /** Mapa nome da conta -> grupo do balancete (a partir do plano de contas). */
 export async function getNomeGrupo(): Promise<Record<string, string>> {
+  if (isDemo) return demoNomeGrupo;
   const rows = await query<{ nome: string; grupo: string | null }>(
     `select name as nome, group_name as grupo from chart_of_accounts`
   );
