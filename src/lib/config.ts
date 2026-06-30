@@ -69,4 +69,7 @@ export const isDemo = (process.env.DEMO_MODE ?? process.env.NEXT_PUBLIC_DEMO_MOD
  * Dispensa o login quando: (dev OU modo demo) E sem SSO configurado.
  * Em produção real o SSO está setado, então NUNCA dispensa.
  */
-export const authDispensado = (isDev || isDemo) && !config.sso.baseUrl;
+/** Acesso privado de 1 usuário: dispensa o login do app (proteção fica na borda, ex.: Vercel Deployment Protection). */
+export const authBypass = process.env.AUTH_BYPASS === "1";
+
+export const authDispensado = (isDev || isDemo || authBypass) && !config.sso.baseUrl;
