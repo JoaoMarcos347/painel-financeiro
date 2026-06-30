@@ -26,7 +26,16 @@ perguntar sobre os números em linguagem natural.
 
 ## 🖼️ Demonstração
 
-> _Demo ao vivo e capturas de tela em breve._
+<p align="center">
+  <img src="docs/screenshots/hero-desktop.png" alt="Painel Financeiro — Visão Geral" width="100%">
+</p>
+
+<p align="center">
+  <img src="docs/screenshots/hero-mobile.png" alt="Versão mobile" width="300">
+  &nbsp;&nbsp;<em>↳ responsivo: mesmo painel no celular</em>
+</p>
+
+> _Demo ao vivo (link) em breve._
 
 Há um **modo demonstração** com dados 100% fictícios (nenhum dado real):
 
