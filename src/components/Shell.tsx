@@ -44,7 +44,7 @@ export function Shell({ children }: { children: React.ReactNode }) {
           </button>
           <div className="flex items-center gap-2 lg:hidden">
             <BrandIcon className="h-7 w-7" />
-            <span className="text-sm font-bold tracking-wide text-[#334155]">{BRAND_NAME.toUpperCase()}</span>
+            <span className="text-sm font-bold tracking-wide text-[#1f5237]">{BRAND_NAME.toUpperCase()}</span>
           </div>
         </header>
 

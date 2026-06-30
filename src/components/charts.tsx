@@ -23,17 +23,17 @@ import { fmtBRL, fmtBRLshort, mesLabel } from "@/lib/format";
 const tooltipFmt = (v: number) => fmtBRL(v);
 
 // Paleta do painel
-const TEAL = "#334155";
-const ORANGE = "#2563eb";
+const TEAL = "#1f5237";
+const ORANGE = "#2d6a40";
 export const PALETA = [
-  "#2563eb", // laranja
-  "#334155", // petróleo
-  "#7c3aed", // vinho
-  "#0ea5e9", // dourado
-  "#5b7a8a", // petróleo claro
-  "#14b8a6", // marrom
-  "#6366f1", // laranja claro
-  "#3f6374", // azul acinzentado
+  "#2d6a40", // verde (marca)
+  "#c2683a", // terracota
+  "#4a9e6e", // verde claro
+  "#b58900", // âmbar
+  "#5b7a8a", // azul-acinzentado
+  "#7c3aed", // violeta
+  "#0ea5e9", // azul
+  "#64748b", // cinza
 ];
 
 export function EvolucaoChart({
@@ -51,7 +51,7 @@ export function EvolucaoChart({
         <Tooltip formatter={tooltipFmt as never} />
         <Legend />
         <Bar dataKey="entradas" name="Entradas" fill="#3f8f6f" radius={[4, 4, 0, 0]} />
-        <Bar dataKey="saidas" name="Saídas" fill={ORANGE} radius={[4, 4, 0, 0]} />
+        <Bar dataKey="saidas" name="Saídas" fill="#c2683a" radius={[4, 4, 0, 0]} />
       </BarChart>
     </ResponsiveContainer>
   );
@@ -63,7 +63,7 @@ export function DespesasChart({ data }: { data: { conta: string; total: number }
       <BarChart data={data} layout="vertical" margin={{ top: 4, right: 16, left: 8, bottom: 4 }}>
         <CartesianGrid strokeDasharray="3 3" stroke="#eef2f7" horizontal={false} />
         <XAxis type="number" tickFormatter={fmtBRLshort} tick={{ fontSize: 11, fill: "#64748b" }} />
-        <YAxis type="category" dataKey="conta" width={170} tick={{ fontSize: 12, fill: "#334155" }} />
+        <YAxis type="category" dataKey="conta" width={170} tick={{ fontSize: 12, fill: "#1f5237" }} />
         <Tooltip formatter={tooltipFmt as never} />
         <Bar dataKey="total" name="Despesas" fill={TEAL} radius={[0, 4, 4, 0]} />
       </BarChart>

@@ -14,20 +14,20 @@ export default async function LoginPage({
   return (
     <div className="relative flex min-h-screen items-center justify-center overflow-hidden p-4">
       {/* Fundo: cor da marca + foto embaçada + degradê */}
-      <div className="absolute inset-0 bg-[#334155]" />
+      <div className="absolute inset-0 bg-[#1f5237]" />
       <div
         className="absolute inset-0 scale-110 bg-cover bg-center opacity-40 blur-[6px]"
         style={{ backgroundImage: "url('/login-bg.jpg')" }}
       />
-      <div className="absolute inset-0 bg-gradient-to-br from-[#334155]/90 via-[#334155]/80 to-[#1e293b]/90" />
+      <div className="absolute inset-0 bg-gradient-to-br from-[#1f5237]/90 via-[#1f5237]/80 to-[#143a22]/90" />
 
       <div className="relative z-10 flex w-full max-w-sm flex-col items-center">
         <BrandIcon className="mb-5 h-24 w-24 drop-shadow-lg" />
 
         <div className="w-full rounded-2xl bg-white/95 p-8 shadow-2xl backdrop-blur">
           <div className="text-center leading-none">
-            <div className="text-2xl font-semibold tracking-[0.25em] text-[#334155]">{BRAND_NAME.toUpperCase()}</div>
-            <div className="mt-1 text-[10px] font-semibold tracking-[0.4em] text-[#2563eb]">
+            <div className="text-2xl font-semibold tracking-[0.25em] text-[#1f5237]">{BRAND_NAME.toUpperCase()}</div>
+            <div className="mt-1 text-[10px] font-semibold tracking-[0.4em] text-[#2d6a40]">
               FINANCEIRO
             </div>
           </div>

@@ -125,7 +125,7 @@ export function ChatWidget() {
           </button>
           <div className="flex items-center gap-2">
             <IAIcon className="h-8 w-8" />
-            <div className="text-sm font-semibold text-[#334155]">Fale com o analista 👋</div>
+            <div className="text-sm font-semibold text-[#1f5237]">Fale com o analista 👋</div>
           </div>
           <p className="mt-2 text-[13px] leading-relaxed text-slate-600">
             Tem dúvida sobre os números? Me pergunte: <em>“quais os maiores gastos do mês?”</em>,
@@ -133,7 +133,7 @@ export function ChatWidget() {
           </p>
           <button
             onClick={abrir}
-            className="mt-3 w-full rounded-lg bg-[#2563eb] px-3 py-2 text-sm font-medium text-white transition hover:bg-[#1d4ed8]"
+            className="mt-3 w-full rounded-lg bg-[#2d6a40] px-3 py-2 text-sm font-medium text-white transition hover:bg-[#1a472a]"
           >
             Conversar agora
           </button>
@@ -145,7 +145,7 @@ export function ChatWidget() {
         {!aberto && (
           <button
             onClick={abrir}
-            className="hidden items-center rounded-full border border-slate-200 bg-white px-3 py-2 text-sm font-semibold text-[#334155] shadow-md transition hover:border-[#2563eb] hover:text-[#2563eb] sm:flex"
+            className="hidden items-center rounded-full border border-slate-200 bg-white px-3 py-2 text-sm font-semibold text-[#1f5237] shadow-md transition hover:border-[#2d6a40] hover:text-[#2d6a40] sm:flex"
           >
             Pergunte à IA
           </button>
@@ -153,11 +153,11 @@ export function ChatWidget() {
         <button
           onClick={() => (aberto ? setAberto(false) : abrir())}
           aria-label="Abrir chat com o analista"
-          className="relative flex h-16 w-16 items-center justify-center rounded-full border border-white/10 bg-[#334155] shadow-lg transition hover:bg-[#1e293b] hover:shadow-xl"
+          className="relative flex h-16 w-16 items-center justify-center rounded-full border border-white/10 bg-[#1f5237] shadow-lg transition hover:bg-[#143a22] hover:shadow-xl"
         >
           {/* anel pulsante até a 1ª utilização */}
           {!jaUsou && !aberto && (
-            <span className="absolute inset-0 animate-ping rounded-full bg-[#2563eb]/40" />
+            <span className="absolute inset-0 animate-ping rounded-full bg-[#2d6a40]/40" />
           )}
           {aberto ? (
             <X size={26} className="text-[#e2e8f0]" />
@@ -170,7 +170,7 @@ export function ChatWidget() {
       {/* Painel do chat */}
       {aberto && (
         <div className="fixed bottom-24 right-5 z-50 flex h-[70vh] max-h-[560px] w-[calc(100vw-2.5rem)] max-w-[400px] flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-2xl">
-          <div className="flex items-center gap-2 bg-[#334155] px-4 py-3 text-white">
+          <div className="flex items-center gap-2 bg-[#1f5237] px-4 py-3 text-white">
             <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-white/90">
               <IAIcon className="h-7 w-7" />
             </span>
@@ -189,7 +189,7 @@ export function ChatWidget() {
                 <div
                   className={`max-w-[85%] whitespace-pre-wrap rounded-2xl px-3 py-2 text-sm leading-relaxed ${
                     m.role === "user"
-                      ? "rounded-br-sm bg-[#2563eb] text-white"
+                      ? "rounded-br-sm bg-[#2d6a40] text-white"
                       : "rounded-bl-sm border border-slate-200 bg-white text-slate-700"
                   }`}
                 >
@@ -204,7 +204,7 @@ export function ChatWidget() {
                   <button
                     key={s}
                     onClick={() => enviar(s)}
-                    className="rounded-full border border-slate-300 bg-white px-3 py-1 text-xs text-slate-600 transition hover:border-[#2563eb] hover:text-[#2563eb]"
+                    className="rounded-full border border-slate-300 bg-white px-3 py-1 text-xs text-slate-600 transition hover:border-[#2d6a40] hover:text-[#2d6a40]"
                   >
                     {s}
                   </button>
@@ -226,12 +226,12 @@ export function ChatWidget() {
               onChange={(e) => setInput(e.target.value)}
               placeholder="Pergunte sobre as finanças…"
               disabled={carregando}
-              className="min-w-0 flex-1 rounded-lg border border-slate-300 px-3 py-2 text-sm outline-none focus:border-[#2563eb] disabled:bg-slate-50"
+              className="min-w-0 flex-1 rounded-lg border border-slate-300 px-3 py-2 text-sm outline-none focus:border-[#2d6a40] disabled:bg-slate-50"
             />
             <button
               type="submit"
               disabled={carregando || !input.trim()}
-              className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-[#2563eb] text-white transition hover:bg-[#1d4ed8] disabled:opacity-50"
+              className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-[#2d6a40] text-white transition hover:bg-[#1a472a] disabled:opacity-50"
               aria-label="Enviar"
             >
               <Send size={16} />

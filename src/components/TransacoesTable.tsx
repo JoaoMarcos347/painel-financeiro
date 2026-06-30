@@ -41,7 +41,7 @@ export function TransacoesTable({
           value={busca}
           onChange={(e) => setBusca(e.target.value)}
           placeholder="Buscar contraparte, descrição, conta…"
-          className="w-72 rounded-lg border border-slate-300 px-3 py-2 text-sm outline-none focus:border-[#334155]"
+          className="w-72 rounded-lg border border-slate-300 px-3 py-2 text-sm outline-none focus:border-[#1f5237]"
         />
         <select
           value={tipo}

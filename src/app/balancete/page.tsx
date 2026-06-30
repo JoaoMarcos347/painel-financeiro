@@ -67,7 +67,7 @@ export default async function Page() {
                   />
                 );
               })}
-              <tr className="border-t-2 border-slate-300 bg-[#334155]/5 font-semibold">
+              <tr className="border-t-2 border-slate-300 bg-[#1f5237]/5 font-semibold">
                 <td className="sticky left-0 z-10 bg-[#eef3f4] px-3 py-2">
                   RESULTADO (Receitas − Despesas)
                 </td>

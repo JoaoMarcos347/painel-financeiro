@@ -44,7 +44,7 @@ export function SyncButton() {
       <button
         onClick={run}
         disabled={loading}
-        className="inline-flex items-center gap-2 rounded-lg bg-[#2563eb] px-4 py-2 text-sm font-medium text-white shadow-sm transition hover:bg-[#1d4ed8] disabled:opacity-60"
+        className="inline-flex items-center gap-2 rounded-lg bg-[#2d6a40] px-4 py-2 text-sm font-medium text-white shadow-sm transition hover:bg-[#1a472a] disabled:opacity-60"
       >
         <RefreshCw size={16} className={loading ? "animate-spin" : ""} />
         {loading ? "Sincronizando…" : "Sincronizar"}

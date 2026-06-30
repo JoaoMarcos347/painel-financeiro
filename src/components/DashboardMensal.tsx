@@ -27,8 +27,8 @@ function Analista({ titulo, mes, texto }: { titulo: string; mes: string; texto?:
     window.dispatchEvent(new CustomEvent("ia-aprofundar", { detail: { titulo, mes, texto } }));
   }
   return (
-    <div className="group mt-3 flex items-start gap-2 rounded-lg bg-[#334155]/[0.06] px-3 py-2 text-[13px] leading-relaxed text-slate-600">
-      <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-md bg-[#334155] p-0.5">
+    <div className="group mt-3 flex items-start gap-2 rounded-lg bg-[#1f5237]/[0.06] px-3 py-2 text-[13px] leading-relaxed text-slate-600">
+      <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-md bg-[#1f5237] p-0.5">
         <IAIcon className="h-full w-full" />
       </span>
       <span className="flex-1">{texto}</span>
@@ -37,7 +37,7 @@ function Analista({ titulo, mes, texto }: { titulo: string; mes: string; texto?:
         onClick={aprofundar}
         title="Conversar sobre isso com a IA"
         aria-label="Conversar sobre esta análise com a IA"
-        className="shrink-0 self-center rounded-md p-1 text-slate-400 opacity-50 transition hover:bg-white hover:text-[#2563eb] group-hover:opacity-100"
+        className="shrink-0 self-center rounded-md p-1 text-slate-400 opacity-50 transition hover:bg-white hover:text-[#2d6a40] group-hover:opacity-100"
       >
         <MessageCircle size={15} />
       </button>
@@ -87,7 +87,7 @@ function KpiMes({
   delta?: React.ReactNode;
 }) {
   return (
-    <Card className="relative overflow-hidden before:absolute before:inset-x-0 before:top-0 before:h-[3px] before:bg-gradient-to-r before:from-[#2563eb] before:to-transparent before:content-['']">
+    <Card className="relative overflow-hidden before:absolute before:inset-x-0 before:top-0 before:h-[3px] before:bg-gradient-to-r before:from-[#2d6a40] before:to-transparent before:content-['']">
       <span className="eyebrow">{titulo}</span>
       <div className={`mt-3 font-serif text-3xl ${cor}`}>{fmtBRL(valor)}</div>
       {delta && <div className="mt-2">{delta}</div>}
@@ -292,14 +292,14 @@ export function DashboardMensal({
       </div>
 
       {/* Analista virtual — resumo do mês + gerar/atualizar */}
-      <Card className="border-l-4 border-l-[#2563eb]">
+      <Card className="border-l-4 border-l-[#2d6a40]">
         <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between sm:gap-4">
           <div className="flex min-w-0 gap-3">
-            <span className="mt-0.5 flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-[#334155] p-1">
+            <span className="mt-0.5 flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-[#1f5237] p-1">
               <IAIcon className="h-full w-full" />
             </span>
             <div className="min-w-0">
-              <div className="font-serif text-lg text-[#334155]">Análise do mês — {mesLabel(mesSel)}</div>
+              <div className="font-serif text-lg text-[#1f5237]">Análise do mês — {mesLabel(mesSel)}</div>
               {com?.resumo ? (
                 <p className="mt-1 text-[15px] leading-relaxed text-slate-700">{com.resumo}</p>
               ) : (
@@ -313,7 +313,7 @@ export function DashboardMensal({
           <button
             onClick={analisar}
             disabled={analisando}
-            className="inline-flex shrink-0 items-center gap-2 self-start rounded-lg bg-[#2563eb] px-3 py-2 text-sm font-medium text-white shadow-sm transition hover:bg-[#1d4ed8] disabled:opacity-60"
+            className="inline-flex shrink-0 items-center gap-2 self-start rounded-lg bg-[#2d6a40] px-3 py-2 text-sm font-medium text-white shadow-sm transition hover:bg-[#1a472a] disabled:opacity-60"
           >
             {com?.resumo ? (
               <RefreshCw size={15} className={analisando ? "animate-spin" : ""} />
@@ -330,7 +330,7 @@ export function DashboardMensal({
         <KpiMes titulo="Receitas do mês" valor={receitas} cor="text-emerald-600" delta={<Delta atual={receitas} anterior={evPrev?.entradas} goodWhenUp />} />
         <KpiMes titulo="Despesas do mês" valor={despesas} cor="text-red-600" delta={<Delta atual={despesas} anterior={evPrev?.saidas} goodWhenUp={false} />} />
         <KpiMes titulo="Resultado do mês" valor={resultado} cor={resultado >= 0 ? "text-emerald-600" : "text-red-600"} delta={<Delta atual={resultado} anterior={evPrev ? evPrev.entradas - evPrev.saidas : undefined} goodWhenUp />} />
-        <KpiMes titulo="Saldo das contas" valor={saldoTotal} cor="text-[#334155]" />
+        <KpiMes titulo="Saldo das contas" valor={saldoTotal} cor="text-[#1f5237]" />
       </div>
 
       {/* Mini stats */}
@@ -465,7 +465,7 @@ export function DashboardMensal({
                       <td key={m} className="px-1 py-1">
                         <div
                           className="rounded px-1 py-1.5 text-center text-[11px]"
-                          style={{ background: bg, color: inten > 0.5 ? "#fff" : "#334155" }}
+                          style={{ background: bg, color: inten > 0.5 ? "#fff" : "#1f5237" }}
                           title={`${g} · ${mesLabel(m)}: ${fmtBRL(v)}`}
                         >
                           {v ? (v / 1000).toLocaleString("pt-BR", { maximumFractionDigits: 0 }) + "k" : "—"}

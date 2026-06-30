@@ -3,9 +3,9 @@
 @theme {
   --font-sans: var(--font-hanken), ui-sans-serif, system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
   --font-serif: var(--font-fraunces), Georgia, "Times New Roman", serif;
-  --color-petroleo: #334155;
-  --color-petroleo-dark: #1e293b;
-  --color-laranja: #2563eb;
+  --color-petroleo: #1f5237;
+  --color-petroleo-dark: #143a22;
+  --color-laranja: #2d6a40;
   --color-creme: #f8fafc;
 }
 
@@ -37,12 +37,12 @@ body {
   font-weight: 700;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: #2563eb;
+  color: #2d6a40;
 }
 .eyebrow::before {
   content: "";
   width: 16px;
   height: 1px;
-  background: #2563eb;
+  background: #2d6a40;
   opacity: 0.7;
 }

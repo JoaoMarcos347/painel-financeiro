@@ -29,10 +29,10 @@ export function Kpi({
     slate: "text-slate-900",
     green: "text-emerald-600",
     red: "text-red-600",
-    blue: "text-[#334155]",
+    blue: "text-[#1f5237]",
   };
   return (
-    <Card className="relative overflow-hidden before:absolute before:inset-x-0 before:top-0 before:h-[3px] before:bg-gradient-to-r before:from-[#2563eb] before:to-transparent before:content-['']">
+    <Card className="relative overflow-hidden before:absolute before:inset-x-0 before:top-0 before:h-[3px] before:bg-gradient-to-r before:from-[#2d6a40] before:to-transparent before:content-['']">
       <span className="eyebrow">{titulo}</span>
       <div className={`mt-3 font-serif text-3xl ${cores[cor]}`}>{fmtBRL(valor)}</div>
       {sub && <div className="mt-1.5 text-xs text-slate-400">{sub}</div>}
@@ -51,7 +51,7 @@ export function PageHeader({
     <div className="mb-6 flex flex-wrap items-end justify-between gap-4">
       <div>
         <span className="eyebrow">Painel Financeiro</span>
-        <h1 className="mt-2 font-serif text-3xl text-[#334155]">{titulo}</h1>
+        <h1 className="mt-2 font-serif text-3xl text-[#1f5237]">{titulo}</h1>
       </div>
       {children}
     </div>

@@ -32,7 +32,7 @@ export function BrandLogo({
   return (
     <div className="text-center leading-none">
       <div className="text-2xl font-semibold tracking-[0.28em] text-[#e2e8f0]">{BRAND_NAME.toUpperCase()}</div>
-      <div className="mt-1 text-[10px] font-semibold tracking-[0.4em] text-[#2563eb]">
+      <div className="mt-1 text-[10px] font-semibold tracking-[0.4em] text-[#2d6a40]">
         FINANCEIRO
       </div>
     </div>

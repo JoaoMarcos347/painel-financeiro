@@ -83,7 +83,7 @@ export function RegrasManager({
           </div>
           <button
             onClick={reclassificar}
-            className="inline-flex items-center gap-2 rounded-lg bg-[#2563eb] px-4 py-2 text-sm font-medium text-white hover:bg-[#1d4ed8]"
+            className="inline-flex items-center gap-2 rounded-lg bg-[#2d6a40] px-4 py-2 text-sm font-medium text-white hover:bg-[#1a472a]"
           >
             <RefreshCw size={16} className={reclass === "Reclassificando…" ? "animate-spin" : ""} />
             Reclassificar
@@ -137,7 +137,7 @@ export function RegrasManager({
                       <button
                         onClick={() => criarRegra(p)}
                         disabled={!sel[p.chave] || busy === p.chave}
-                        className="inline-flex items-center gap-1 rounded-lg border border-[#2563eb] px-3 py-1.5 text-sm font-medium text-[#2563eb] hover:bg-[#2563eb]/5 disabled:opacity-40"
+                        className="inline-flex items-center gap-1 rounded-lg border border-[#2d6a40] px-3 py-1.5 text-sm font-medium text-[#2d6a40] hover:bg-[#2d6a40]/5 disabled:opacity-40"
                       >
                         <Plus size={15} /> Criar regra
                       </button>

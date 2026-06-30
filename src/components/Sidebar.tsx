@@ -28,7 +28,7 @@ export function Sidebar({ onClose }: { onClose?: () => void }) {
   }
 
   return (
-    <aside className="fixed inset-y-0 left-0 z-40 flex w-60 shrink-0 flex-col bg-gradient-to-b from-[#334155] to-[#1e293b] text-[#e2e8f0]/80 lg:static lg:z-auto">
+    <aside className="fixed inset-y-0 left-0 z-40 flex w-60 shrink-0 flex-col bg-gradient-to-b from-[#1f5237] to-[#143a22] text-[#e2e8f0]/80 lg:static lg:z-auto">
       <div className="relative flex flex-col items-center gap-2 border-b border-white/10 px-5 py-6">
         <button
           onClick={onClose}
@@ -53,11 +53,11 @@ export function Sidebar({ onClose }: { onClose?: () => void }) {
               onClick={fecharSeMobile}
               className={`flex items-center gap-3 rounded-lg border-l-2 px-3 py-2 text-sm font-medium transition ${
                 active
-                  ? "border-[#2563eb] bg-white/10 text-white"
+                  ? "border-[#2d6a40] bg-white/10 text-white"
                   : "border-transparent text-[#e2e8f0]/70 hover:bg-white/5 hover:text-white"
               }`}
             >
-              <Icon size={18} className={active ? "text-[#2563eb]" : ""} />
+              <Icon size={18} className={active ? "text-[#2d6a40]" : ""} />
               {label}
             </Link>
           );
