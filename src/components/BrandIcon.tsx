@@ -10,7 +10,7 @@ export function BrandIcon({ className = "" }: { className?: string }) {
     return (
       // eslint-disable-next-line @next/next/no-img-element
       <img
-        src="/icon.png"
+        src="/logo-jm.svg"
         alt={BRAND_NAME}
         onError={() => setOk(false)}
         className={className}

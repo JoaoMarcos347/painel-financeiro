@@ -15,7 +15,7 @@ export function BrandLogo({
   className?: string;
 }) {
   const [ok, setOk] = useState(true);
-  const src = variant === "icon" ? "/icon.png" : "/logo.png";
+  const src = "/logo-jm.svg";
 
   if (ok) {
     return (

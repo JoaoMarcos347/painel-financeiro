@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { RefreshCw } from "lucide-react";
+import { IS_DEMO } from "@/lib/brand";
 
 export function SyncButton() {
   const router = useRouter();
@@ -35,6 +36,8 @@ export function SyncButton() {
       setLoading(false);
     }
   }
+
+  if (IS_DEMO) return null;
 
   return (
     <div className="flex items-center gap-3">

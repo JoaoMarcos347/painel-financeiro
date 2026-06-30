@@ -1,6 +1,5 @@
-import { Sparkles } from "lucide-react";
-
-/** Ícone da IA (genérico). */
+/** Ícone da IA — usa a logo da marca. */
 export function IAIcon({ className = "" }: { className?: string }) {
-  return <Sparkles className={className} aria-hidden />;
+  // eslint-disable-next-line @next/next/no-img-element
+  return <img src="/logo-jm.svg" alt="IA" className={className} />;
 }
