@@ -56,21 +56,22 @@ const REGRAS = [
 // --- Modelos de lançamento recorrentes (por mês) ---------------------------
 // tipo, descrição, contraparte, código, nome, valor-base
 const MODELOS = [
-  ["CREDIT", "Recebimento de vendas", "Clientes diversos", "3.1", "Receita de Vendas", 62000],
-  ["CREDIT", "Contratos de serviço", "Contratos de serviço", "3.2", "Receita de Serviços", 28000],
-  ["DEBIT", "Folha de pagamento", "Folha de Pagamento", "4.1", "Salários", 28000],
+  ["CREDIT", "Recebimento de vendas", "Clientes diversos", "3.1", "Receita de Vendas", 82000],
+  ["CREDIT", "Contratos de serviço", "Contratos de serviço", "3.2", "Receita de Serviços", 38000],
+  ["DEBIT", "Folha de pagamento", "Folha de Pagamento", "4.1", "Salários", 27000],
   ["DEBIT", "Pró-labore sócios", "Sócios", "4.2", "Pró-labore", 12000],
   ["DEBIT", "Aluguel do imóvel", "Imobiliária Central", "4.3", "Aluguel", 6500],
   ["DEBIT", "Conta de energia", "Enel Distribuição", "4.4", "Energia Elétrica", 1800],
-  ["DEBIT", "DAS - Simples Nacional", "Receita Federal", "4.5", "Impostos (Simples Nacional)", 9500],
+  ["DEBIT", "DAS - Simples Nacional", "Receita Federal", "4.5", "Impostos (Simples Nacional)", 9200],
   ["DEBIT", "Assinatura de software", "Software SaaS Ltda", "4.6", "Software / Assinaturas", 2400],
   ["DEBIT", "Tarifas bancárias", "Tarifa Bancária", "4.7", "Tarifas Bancárias", 320],
-  ["DEBIT", "Compra de fornecedores", "Distribuidora XYZ", "4.8", "Fornecedores", 15000],
+  ["DEBIT", "Compra de fornecedores", "Distribuidora XYZ", "4.8", "Fornecedores", 13000],
   ["DEBIT", "Campanha de marketing", "Agência Web", "4.9", "Marketing", 3000],
 ];
 
 const MESES = ["2026-01", "2026-02", "2026-03", "2026-04", "2026-05", "2026-06"];
-const FATOR = [1.0, 0.95, 1.08, 1.02, 1.12, 0.98]; // variação mensal p/ gráficos vivos
+const REC_FATOR = [0.86, 0.92, 0.97, 1.03, 1.10, 1.18];  // receitas crescendo (tendência saudável)
+const DESP_FATOR = [1.0, 0.98, 1.01, 0.99, 1.0, 0.98];   // despesas estáveis
 
 async function main() {
   console.log(isLocal ? "→ banco local" : "→ banco remoto (SSL)");
@@ -91,9 +92,9 @@ async function main() {
   // Contas
   const accs = [];
   const accDefs = [
-    ["demo-a1", c1, "Bradesco", "Conta Corrente", "0001-1", 84230.55],
-    ["demo-a2", c1, "Itaú", "Conta Corrente", "0002-2", 31200.1],
-    ["demo-a3", c2, "Bradesco", "Conta Corrente", "0003-3", 22980.0],
+    ["demo-a1", c1, "Bradesco", "Conta Corrente", "0001-1", 142850.4],
+    ["demo-a2", c1, "Itaú", "Conta Corrente", "0002-2", 68420.15],
+    ["demo-a3", c2, "Bradesco", "Conta Corrente", "0003-3", 41260.0],
   ];
   for (const [conn, comp, bank, type, num, bal] of accDefs) {
     const id = (await pool.query(
@@ -122,12 +123,12 @@ async function main() {
   let n = 0;
   for (let mi = 0; mi < MESES.length; mi++) {
     const ym = MESES[mi];
-    const f = FATOR[mi];
     for (let k = 0; k < MODELOS.length; k++) {
       const [type, desc, cp, code, name, base] = MODELOS[k];
       const acc = accs[k % accs.length];
       const dia = String(2 + Math.floor(Math.random() * 26)).padStart(2, "0");
-      const valor = Math.round(base * f * (0.75 + Math.random() * 0.5) * 100) / 100;
+      const f = type === "CREDIT" ? REC_FATOR[mi] : DESP_FATOR[mi];
+      const valor = Math.round(base * f * (0.94 + Math.random() * 0.12) * 100) / 100;
       await pool.query(
         `insert into transactions
            (autmais_id, account_id, company_id, date, datetime, type, amount, description,
