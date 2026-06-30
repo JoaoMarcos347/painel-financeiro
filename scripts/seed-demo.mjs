@@ -126,8 +126,8 @@ async function main() {
     for (let k = 0; k < MODELOS.length; k++) {
       const [type, desc, cp, code, name, base] = MODELOS[k];
       const acc = accs[k % accs.length];
-      const dia = String(3 + ((k * 2) % 25)).padStart(2, "0");
-      const valor = Math.round(base * f * (0.97 + ((k % 5) * 0.015)) * 100) / 100;
+      const dia = String(2 + Math.floor(Math.random() * 26)).padStart(2, "0");
+      const valor = Math.round(base * f * (0.75 + Math.random() * 0.5) * 100) / 100;
       await pool.query(
         `insert into transactions
            (autmais_id, account_id, company_id, date, datetime, type, amount, description,
