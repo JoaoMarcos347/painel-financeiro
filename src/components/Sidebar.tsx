@@ -3,7 +3,6 @@
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { LayoutDashboard, Receipt, BookOpenText, Tags, LogOut, X } from "lucide-react";
-import { BrandIcon } from "@/components/BrandIcon";
 import { BRAND_NAME } from "@/lib/brand";
 
 const links = [
@@ -38,13 +37,8 @@ export function Sidebar({ onClose }: { onClose?: () => void }) {
         >
           <X size={18} />
         </button>
-        <BrandIcon className="h-14 w-14" />
-        <div className="text-center leading-none">
-          <div className="text-sm font-semibold tracking-[0.25em] text-[#e2e8f0]">{BRAND_NAME.toUpperCase()}</div>
-          <div className="mt-1 text-[8px] font-semibold tracking-[0.35em] text-[#2563eb]">
-            FINANCEIRO
-          </div>
-        </div>
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img src="/logo-jm-full.svg" alt={BRAND_NAME} className="w-full max-w-[190px]" />
       </div>
       <nav className="flex-1 space-y-1 p-3">
         <div className="px-3 pb-2 pt-1 text-[9.5px] font-bold uppercase tracking-[0.2em] text-white/35">
