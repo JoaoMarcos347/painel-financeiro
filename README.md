@@ -2,6 +2,11 @@
 
 > Dashboard de gestão financeira que transforma o extrato bancário em decisão — automático, com IA e pronto pro celular.
 
+<p align="center">
+  <a href="https://painel-joao-marcos.vercel.app"><strong>🔗 Ver demo ao vivo</strong></a>
+  &nbsp;·&nbsp; <em>dados fictícios · abre sem login</em>
+</p>
+
 Aplicação web que **conecta no Open Finance, organiza cada movimento e monta o balancete sozinho**,
 apresentando tudo em dashboards claros, com análises por Inteligência Artificial e um chat para
 perguntar sobre os números em linguagem natural.
@@ -35,7 +40,7 @@ perguntar sobre os números em linguagem natural.
   &nbsp;&nbsp;<em>↳ responsivo: mesmo painel no celular</em>
 </p>
 
-> _Demo ao vivo (link) em breve._
+> **🔗 Demo ao vivo:** <https://painel-joao-marcos.vercel.app> — dados 100% fictícios, abre sem login.
 
 Há um **modo demonstração** com dados 100% fictícios (nenhum dado real):
 
