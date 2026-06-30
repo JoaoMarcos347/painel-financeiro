@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { fetchAllTransactions, getAccounts, getNomeGrupo } from "@/lib/queries";
 import { montarContextoChat, SYSTEM_CHAT } from "@/lib/chat";
 import { getAnthropic, MODELO_IA } from "@/lib/anthropic";
+import { isDemo } from "@/lib/config";
 
 export const runtime = "nodejs";
 export const maxDuration = 120;
@@ -16,6 +17,25 @@ export async function POST(req: Request) {
     if (!messages.length) throw new Error("sem mensagens");
   } catch {
     return NextResponse.json({ ok: false, erro: "Mensagem inválida." }, { status: 400 });
+  }
+
+  // Modo demonstração: resposta pronta (sem chamar a IA, sem custo).
+  if (isDemo) {
+    const demo =
+      "🌱 Esta é a demonstração — respondo com dados fictícios, sem custo. " +
+      "Na versão completa eu leio seu extrato real e respondo na hora: " +
+      '"maiores gastos do mês", "onde dá pra economizar", "compare maio e junho", "como está o resultado". ' +
+      "Neste exemplo, o mês fechou positivo (~R$ 65 mil de resultado), com as maiores saídas em Salários e Fornecedores.";
+    const enc = new TextEncoder();
+    const rs = new ReadableStream<Uint8Array>({
+      start(c) {
+        c.enqueue(enc.encode(demo));
+        c.close();
+      },
+    });
+    return new Response(rs, {
+      headers: { "Content-Type": "text/plain; charset=utf-8", "Cache-Control": "no-store" },
+    });
   }
 
   let client, contexto;

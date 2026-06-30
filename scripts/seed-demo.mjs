@@ -144,6 +144,26 @@ async function main() {
     }
   }
 
+  // Comentários de IA prontos (mês mais recente) — aparecem sem precisar clicar.
+  const COMENTARIOS_DEMO = {
+    resumo: "Mês positivo: receitas em alta e despesas estáveis, com resultado de ~R$ 65 mil (margem ~46%). Caixa saudável, com folga de ~3 meses.",
+    kpis: "Receita cresceu vs o mês anterior e as despesas ficaram controladas — melhor resultado do semestre.",
+    donut: "Despesas concentradas em Pessoal (~50%) e Fornecedores; o restante bem distribuído.",
+    maiores_gastos: "Salários, Fornecedores e Pró-labore lideram as saídas do mês.",
+    fluxo: "Entradas superaram as saídas o mês todo — o caixa terminou no positivo.",
+    evolucao: "Tendência de crescimento: as entradas sobem mês a mês com as saídas controladas.",
+    movers: "Fornecedores e Pró-labore subiram; Impostos e Aluguel recuaram vs o mês anterior.",
+    recorrentes: "Contas recorrentes em linha com a média; nada fora do padrão.",
+    heatmap: "Pessoal é o grupo mais pesado em todos os meses; os demais seguem estáveis.",
+    tendencia: "Resultado positivo e crescente nos últimos meses.",
+    top_pagadores: "Recebimentos pulverizados entre clientes diversos e contratos de serviço.",
+  };
+  await pool.query(
+    `insert into insights_cache (id, reference_month, content, model, generated_at)
+     values ($1,$2,$3,'demo', now())`,
+    ["2026-06", "2026-06", JSON.stringify(COMENTARIOS_DEMO)]
+  );
+
   console.log(`✓ Seed concluído: 2 empresas, ${accs.length} contas, ${PLANO.length} contas do plano, ${REGRAS.length} regras, ${n} lançamentos.`);
   await pool.end();
 }
